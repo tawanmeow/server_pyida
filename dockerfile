@@ -1,9 +1,9 @@
 FROM alpine:3.7
 RUN apk add --no-cache python3
-RUN mkdir ScottishFold
-COPY dataset_cm_model.zip /ScottishFold/dataset_cm_model.zip
-COPY pcap.zip /ScottishFold/pcap.zip
-COPY server.py /ScottishFold/server.py
+RUN mkdir server_ida
+COPY entes_mpr45s.py /server_ida/entes_mpr45s.py
+COPY powermeter69.py /server_ida/powermeter69.py
+COPY schneider.py /server_ida/schneider.py
 EXPOSE 6789
-WORKDIR /ScottishFold
+WORKDIR /server_ida
 CMD ["python3","server.py"]
