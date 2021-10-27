@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}IDA Platform • Libraries{% endblock %}
+{% block content %}
+<div class="box-headerlibraries">
+  <br><br><br>
+  <h2>Upload</h2><br>
+</div>
+
+{% with messages = get_flashed_messages() %}
+{% if "successfully" in messages[0] %}
+<br>
+<div class="success_item">
+  {{ messages[0] }}
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+</div>
+{% elif messages %}
+<br>
+<div class="alert_item">
+  {{ messages[0] }}
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+</div>
+{% endif %}
+{% endwith %}
+<br><br>
+
+<div id="upload" class="tabcontent" style="display: block">
+  <div class="uploadPanel" style="align-items: center;justify-content:center;display: flex;">
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <label for="modelname">Power meter name: </label>
+      <input type="text" id="modelname" name=modelname><br><br>
+      <input type="file" name="file" />
+      <input type="submit">
+    </form>
+  </div>
+</div>
+{% endblock %}

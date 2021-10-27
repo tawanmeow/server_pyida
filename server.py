@@ -76,7 +76,7 @@ def upload_post():
             flash('"' + modelname + '" uploaded successfully.')
         else:
             success = False
-            flash("Failed: Can't upload " + modelname + '" to database.')
+            flash("Failed: Can't upload '" + modelname + '" to database.')
         return redirect('libraries')
     except:
         flash("Failed: Can't upload library to database")

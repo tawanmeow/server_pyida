@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}IDA Platform • Libraries{% endblock %}
+{% block content %}
+<div class="box-headerlibraries">
+  <br><br><br>
+  <h2>Library Server</h2><br>
+</div>
+
+{% with messages = get_flashed_messages() %}
+{% if "successfully" in messages[0] %}
+<br>
+<div class="success_item">
+  {{ messages[0] }}
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+</div>
+{% elif messages %}
+<br>
+<div class="alert_item">
+  {{ messages[0] }}
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+</div>
+{% endif %}
+{% endwith %}
+
+<div id="libraries" class="tabcontent" style="display: block">
+    <div class="librariesTable" style="align-items: center;justify-content:center;display: flex;">
+      <table cellspacing="0" cellpadding="0" style="width: 65%">
+        <tr>
+          <th>Power Meter</th>
+          <th>Library Name</th>
+          <th>Download Library</th>
+        </tr>
+        {% for model in libraries %}
+        <tr>
+          <td>{{ model[0] }}</td>
+          <td>{{ model[1] }}</td>
+          <td><a href="/libraries/{{ model[1] }}.py" target="blank"><button class='btn'>Download</button></a></td>
+          <br>
+        </tr>
+        {% endfor %}
+      </table></div>
+</div>
+{% endblock %}
